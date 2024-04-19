@@ -1,0 +1,14 @@
+<ul>
+    {% for item in  menu_items %}       
+        <li>
+            <a href="{{item.item.get_absolute_url}}">{{item.item.cat_name}}</a>
+            {% if item.children %}
+            {% if item.expanded %}
+                <ul>                    
+                {% include "menu_cat.html" with menu_items=item.children %}                    
+                </ul>
+            {% endif %}
+        </li>       
+        {% endif %}
+    {% endfor %}
+</ul>
